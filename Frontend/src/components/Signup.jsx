@@ -1,19 +1,49 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa'; // Importing the cross icon from react-icons
 import Login from './Login'; // Ensure to import the Login component
 import { useForm } from "react-hook-form";
-
-
-
+import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Signup = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/"
   const [showLogin, setShowLogin] = useState(false);
-      const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = async data => {
+    const userInfo = {
+      fullname: data.email,
+      email: data.email,
+      password: data.password
+    }
+    await axios.post('http://localhost:4001/user/signup', userInfo)
+      .then((res) => {
+        console.log(res.data)
+        if (res.data) {
+          toast.success('Successfully Signup!');
+          setTimeout(() => {
+            navigate(from, { replace: true })
+
+          }, 1000);
+
+        }
+        localStorage.setItem("Users", JSON.stringify(res.data.user));
+      })
+      .catch((err) => {
+        if (err.response) {
+          toast.error("Error: " + err.response.data.message);
+        }
+
+      })
+  }
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen  dark:bg-slate-900 dark:text-white border relative ">
+
+      <Toaster />
+
       <Link to="/" className="absolute top-4 right-4">
         <FaTimes className="text-gray-700 dark:text-white cursor-pointer" size={24} />
       </Link>
@@ -26,12 +56,12 @@ const Signup = () => {
           <input
             type="text"
             id="name"
-            placeholder="Enter your name"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"{...register("name", { required: true })}
-            
+            placeholder="Enter your fullname"
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"{...register("fullname", { required: true })}
+
           />
-           <br />
-           {errors.name && <span className='text-[3.5vw] md:text-[1vw] text-red-500'>This field is required</span>}
+          <br />
+          {errors.name && <span className='text-[3.5vw] md:text-[1vw] text-red-500'>This field is required</span>}
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2 dark:bg-slate-900 dark:text-white" htmlFor="email">
@@ -43,8 +73,8 @@ const Signup = () => {
             placeholder="Enter your email"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"{...register("email", { required: true })}
           />
-           <br />
-           {errors.email && <span className='text-[3.5vw] md:text-[1vw] text-red-500'>This field is required</span>}
+          <br />
+          {errors.email && <span className='text-[3.5vw] md:text-[1vw] text-red-500'>This field is required</span>}
         </div>
         <div className="mb-6">
           <input
@@ -54,8 +84,8 @@ const Signup = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             {...register("password", { required: true })}
           />
-           <br />
-           {errors.password && <span className='text-[3.5vw] md:text-[1vw] text-red-500'>This field is required</span>}
+          <br />
+          {errors.password && <span className='text-[3.5vw] md:text-[1vw] text-red-500'>This field is required</span>}
         </div>
         <button
           type="submit"

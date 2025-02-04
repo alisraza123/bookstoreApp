@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Cards({ item }) {
-    console.log(item)
+    // console.log(item)
     return (
         <>
 
@@ -17,7 +17,7 @@ function Cards({ item }) {
                     <div className="card-body">
                         <h2 className="card-title text-[18px]">
                            {item.title}
-                            <div className="badge badge-secondary">{item.status}</div>
+                            <div className="badge badge-secondary">{item.category}</div>
                         </h2>
                         <p className='text-[14px]'>{item.desc}</p>
                         <div className="card-actions justify-between p-2">

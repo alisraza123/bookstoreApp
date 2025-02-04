@@ -3,7 +3,7 @@
     "id": 1,
     "image": "/assets/book1.png",
     "title": "Drama Book",
-    "status": "Free",
+    "category": "Free",
     "desc": "A captivating drama book that will keep you hooked.",
     "price": "5"
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "image": "/assets/book2.png",
     "title": "Science Book",
-    "status": "Free",
+    "category": "Free",
     "desc": "A comprehensive guide to understanding the basics.",
     "price": "0"
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "image": "/assets/book3.png",
     "title": "Math Book",
-    "status": "Paid",
+    "category": "Paid",
     "desc": "A book filled with mathematical concepts and exercises.",
     "price": "19"
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "image": "/assets/book4.png",
     "title": "English Book",
-    "status": "Free",
+    "category": "Free",
     "desc": "A book filled with poems and stories.",
     "price": "20"
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "image": "/assets/book5.png",
     "title": "Database Systems",
-    "status": "Paid",
+    "category": "Paid",
     "desc": "Covers SQL, NoSQL, and database design concepts.",
     "price": "25"
   },
@@ -43,7 +43,7 @@
     "id": 6,
     "image": "/assets/book6.png",
     "title": "Operating Systems",
-    "status": "Free",
+    "category": "Free",
     "desc": "Learn OS fundamentals like processes and memory management.",
     "price": "0"
   },
@@ -51,7 +51,7 @@
     "id": 7,
     "image": "/assets/book7.png",
     "title": "Microcomputer Systems",
-    "status": "Paid",
+    "category": "Paid",
     "desc": "Explains microprocessors, architecture, and hardware interfacing.",
     "price": "30"
   },
@@ -59,7 +59,7 @@
     "id": 8,
     "image": "/assets/book8.png",
     "title": "Data Structures",
-    "status": "Free",
+    "category": "Free",
     "desc": "Learn linked lists, trees, and graphs with examples.",
     "price": "0"
   },
@@ -67,7 +67,7 @@
     "id": 9,
     "image": "/assets/book9.png",
     "title": "Java Programming",
-    "status": "Paid",
+    "category": "Paid",
     "desc": "Covers OOP, multithreading, and Java frameworks.",
     "price": "35"
   },
@@ -75,7 +75,7 @@
     "id": 10,
     "image": "/assets/book10.png",
     "title": "Computer Systems",
-    "status": "Paid",
+    "category": "Paid",
     "desc": "Explores hardware, software, and system-level programming.",
     "price": "40"
   }
